@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply flex items-center w-3/6 pt-4 pb-4 rounded-3xl text-base justify-center;
+  }
+}
