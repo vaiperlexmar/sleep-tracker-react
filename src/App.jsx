@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Splash from "./components/Splash";
 import SignUpForm from "./components/SignUpForm";
 import Login from "./components/Login";
+import { AuthProvider } from "./context/AuthContext";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   const [openedSignUp, setOpenedSignUp] = useState(false);
@@ -52,7 +54,15 @@ function App() {
       className="flex h-screen items-center justify-center bg-cover bg-no-repeat "
       style={{ backgroundImage: `url("./src/assets/splash-bg.jpg")` }}
     >
-      {authPage}
+      <Router>
+        <AuthProvider>
+          <Routes>
+            <Route exact path="/" element={<Splash />} />
+            {/* <Route exact path="/splash" element={<Splash />} /> */}
+            <Route path="/signup" element={<SignUpForm />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
     </div>
   );
 }

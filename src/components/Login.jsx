@@ -17,10 +17,10 @@ export default function Login({ onBackArrowClick, onSignUpClick }) {
       </header>
       <form action="#" className="text-center">
         <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="username"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="email"
           className="mb-4 w-3/4 rounded-3xl bg-scroll bg-no-repeat pl-10"
           required
           style={{
@@ -47,6 +47,15 @@ export default function Login({ onBackArrowClick, onSignUpClick }) {
           }
         />
       </form>
+
+      <p className="mb-4 text-center">
+        <a
+          href="#"
+          className="text-purple-500 transition-all hover:text-purple-700"
+        >
+          Forgot Password?
+        </a>
+      </p>
 
       <p className="text-center">
         Don't have an account yet?{" "}
