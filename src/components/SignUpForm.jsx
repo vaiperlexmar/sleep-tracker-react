@@ -4,8 +4,9 @@ import WhiteContainer from "./WhiteContainer";
 import Button from "./Button/Button";
 import personImg from "../assets/person.svg";
 import keyImg from "../assets/key.svg";
+import { Link } from "react-router-dom";
 
-export default function SignUpForm({ onBackArrowClick, onLoginClick }) {
+export default function SignUpForm() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -24,8 +25,7 @@ export default function SignUpForm({ onBackArrowClick, onLoginClick }) {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-    } catch (error) {
-      console.error(error);
+    } catch {
       setError("Failed to create an account");
     }
     setLoading(false);
@@ -35,9 +35,9 @@ export default function SignUpForm({ onBackArrowClick, onLoginClick }) {
     <WhiteContainer>
       <header>
         <h1 className="mb-12 grid grid-cols-3 gap-4 text-center font-serif text-4xl font-bold">
-          <Button onClick={onBackArrowClick}>
+          <Link to="/splash">
             <span className="material-symbols-outlined">arrow_back</span>
-          </Button>
+          </Link>
           <span>Sign Up</span>
         </h1>
 
@@ -95,14 +95,13 @@ export default function SignUpForm({ onBackArrowClick, onLoginClick }) {
       </form>
 
       <p className="text-center">
-        You have an account? Let's{" "}
-        <a
-          href="#"
+        You have an account already? Let's{" "}
+        <Link
+          to="/login"
           className="text-purple-500 transition-all hover:text-purple-700"
-          onClick={onLoginClick}
         >
           login
-        </a>
+        </Link>
       </p>
     </WhiteContainer>
   );

@@ -4,51 +4,9 @@ import SignUpForm from "./components/SignUpForm";
 import Login from "./components/Login";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Dashboard from "./components/Dashboard";
 
 function App() {
-  const [openedSignUp, setOpenedSignUp] = useState(false);
-  const [openedLogin, setOpenedLogin] = useState(false);
-
-  function handleSignUpClick() {
-    if (openedLogin) {
-      setOpenedLogin(false);
-      setOpenedSignUp(true);
-    }
-    setOpenedSignUp(!openedSignUp);
-  }
-
-  function handleLoginClick() {
-    if (openedSignUp) {
-      setOpenedSignUp(false);
-      setOpenedLogin(true);
-    }
-    setOpenedLogin(!openedLogin);
-  }
-
-  let authPage;
-  if (openedSignUp) {
-    authPage = (
-      <SignUpForm
-        onBackArrowClick={handleSignUpClick}
-        onLoginClick={handleLoginClick}
-      />
-    );
-  } else if (openedLogin) {
-    authPage = (
-      <Login
-        onBackArrowClick={handleLoginClick}
-        onSignUpClick={handleSignUpClick}
-      />
-    );
-  } else {
-    authPage = (
-      <Splash
-        onSignUpClick={handleSignUpClick}
-        onLoginClick={handleLoginClick}
-      />
-    );
-  }
-
   return (
     <div
       className="flex h-screen items-center justify-center bg-cover bg-no-repeat "
@@ -57,9 +15,10 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            <Route exact path="/" element={<Splash />} />
-            {/* <Route exact path="/splash" element={<Splash />} /> */}
+            <Route exact path="/" element={<Dashboard />} />
+            <Route exact path="/splash" element={<Splash />} />
             <Route path="/signup" element={<SignUpForm />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </AuthProvider>
       </Router>

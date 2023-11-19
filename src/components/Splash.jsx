@@ -2,6 +2,7 @@ import React from "react";
 import googleIcon from "../assets/Google_ G _Logo.svg";
 import Button from "./Button/Button";
 import WhiteContainer from "./WhiteContainer";
+import { Link } from "react-router-dom";
 
 export default function Splash({ onSignUpClick, onLoginClick }) {
   return (
@@ -14,11 +15,12 @@ export default function Splash({ onSignUpClick, onLoginClick }) {
       </p>
 
       <div className="mb-4 flex items-center gap-4">
-        <Button
-          className="btn border-2 border-solid border-purple-500 bg-purple-500 text-white transition-all hover:bg-white hover:text-black"
-          text={"Sign Up"}
-          onClick={onSignUpClick}
-        />
+        <Link
+          to="/signup"
+          className="btn cursor-pointer border-2 border-solid border-purple-500 bg-purple-500 text-white transition-all hover:bg-white hover:text-black"
+        >
+          Sign Up
+        </Link>
         <Button
           className="btn gap-2 border-2 border-solid border-purple-500 transition-all hover:bg-white "
           text={"Sign Up with"}
@@ -28,13 +30,12 @@ export default function Splash({ onSignUpClick, onLoginClick }) {
 
       <p className="text-center">
         If you already registred, you can use{" "}
-        <a
-          href="#"
+        <Link
+          to="/login"
           className="text-purple-500 transition-all hover:text-purple-700"
-          onClick={onLoginClick}
         >
           login
-        </a>
+        </Link>
       </p>
     </WhiteContainer>
   );
