@@ -4,7 +4,7 @@ import WhiteContainer from "./WhiteContainer";
 import Button from "./Button/Button";
 import personImg from "../assets/person.svg";
 import keyImg from "../assets/key.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUpForm() {
   const emailRef = useRef();
@@ -13,6 +13,7 @@ export default function SignUpForm() {
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -25,6 +26,7 @@ export default function SignUpForm() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      navigate("/");
     } catch {
       setError("Failed to create an account");
     }

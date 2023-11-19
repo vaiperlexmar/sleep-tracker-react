@@ -4,14 +4,15 @@ import WhiteContainer from "./WhiteContainer";
 import Button from "./Button/Button";
 import personImg from "../assets/person.svg";
 import keyImg from "../assets/key.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function Login({ onBackArrowClick, onSignUpClick }) {
+export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -20,6 +21,7 @@ export default function Login({ onBackArrowClick, onSignUpClick }) {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      navigate("/");
     } catch {
       setError("Failed to login in");
     }

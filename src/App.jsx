@@ -4,7 +4,8 @@ import SignUpForm from "./components/SignUpForm";
 import Login from "./components/Login";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
+import Entries from "./components/Entries";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
       <Router>
         <AuthProvider>
           <Routes>
-            <Route exact path="/" element={<Dashboard />} />
-            <Route exact path="/splash" element={<Splash />} />
+            <Route exact path="/" element={<PrivateRoute />}>
+              <Route exact path="/" element={<Entries />} />
+            </Route>
+            <Route path="/splash" element={<Splash />} />
             <Route path="/signup" element={<SignUpForm />} />
             <Route path="/login" element={<Login />} />
           </Routes>
