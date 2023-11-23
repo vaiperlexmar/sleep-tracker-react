@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "./Button/Button";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [error, setError] = useState("");
@@ -20,10 +20,13 @@ export default function Header() {
   }
 
   return (
-    <header className="w-full">
+    <header className="">
       <nav>
         <ul>
           <li>
+            <Link to="#">Dashboard</Link>
+            <Link to="#">About</Link>
+            <Link to="#">Entries</Link>
             <Button
               text={"Log Out"}
               onClick={handleLogout}
