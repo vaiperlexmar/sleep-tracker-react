@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import Modal from "./Modal/Modal";
+import Button from "./Button/Button";
 
 export default function Entries() {
   const [modalActive, setModalActive] = useState(true);
@@ -12,6 +13,7 @@ export default function Entries() {
 
       <main>
         <Modal active={modalActive} setActive={setModalActive} />
+        <Button />
       </main>
     </div>
   );

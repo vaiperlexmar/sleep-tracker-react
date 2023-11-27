@@ -7,6 +7,14 @@
     @apply flex w-3/6 items-center justify-center rounded-3xl pb-2 pt-2 text-base;
   }
 
+  .btn-purple {
+    @apply m-auto mb-4 border-2 border-solid border-purple-500 bg-purple-500 text-white transition-all hover:bg-white hover:text-black;
+  }
+
+  .btn-white {
+    @apply m-auto gap-2 border-2 border-solid border-purple-500 transition-all hover:bg-white;
+  }
+
   .sign-up {
     @apply grid h-screen grid-cols-1 place-items-center bg-cover bg-no-repeat;
   }
